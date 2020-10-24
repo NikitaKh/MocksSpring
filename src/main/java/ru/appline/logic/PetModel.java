@@ -6,27 +6,35 @@ import java.util.Map;
 
 public class PetModel implements Serializable {
 
-    private static final PetModel instance = new PetModel();
+    private static final PetModel petInstance = new PetModel();
 
-    private final Map<Integer, Pet> model;
+    private final Map<Integer, Pet> petModel;
 
     public PetModel() {
-        model = new HashMap<Integer, Pet>();
+        petModel = new HashMap<Integer, Pet>();
     }
 
-    public static PetModel getInstance(){
-        return instance;
+    public static PetModel getPetInstance(){
+        return petInstance;
     }
 
     public void add(int id, Pet pet){
-        model.put(id, pet);
+        petModel.put(id, pet);
     }
 
     public Pet getFromList(int id){
-        return model.get(id);
+        return petModel.get(id);
     }
 
     public Map<Integer, Pet> getAll(){
-        return model;
+        return petModel;
+    }
+
+    public void delete(int id){
+        petModel.remove(id);
+    }
+
+    public void edit(int id, Pet pet){
+        petModel.replace(id, pet);
     }
 }
